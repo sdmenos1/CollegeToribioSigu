@@ -149,7 +149,6 @@ export default function CourseGradesWindow({ studentId, courseId, onClose }: Cou
                           <TableHead>Fecha</TableHead>
                           <TableHead>Nota</TableHead>
                           <TableHead>Peso (%)</TableHead>
-                          <TableHead>Estado</TableHead>
                         </TableRow>
                       </TableHeader>
                       <TableBody>
@@ -168,11 +167,6 @@ export default function CourseGradesWindow({ studentId, courseId, onClose }: Cou
                               </span>
                             </TableCell>
                             <TableCell>{grade.weight}%</TableCell>
-                            <TableCell>
-                              <Badge className={getGradeBadge(grade.score, grade.maxScore)}>
-                                {((grade.score / grade.maxScore) * 100).toFixed(0)}%
-                              </Badge>
-                            </TableCell>
                           </TableRow>
                         ))}
                       </TableBody>
@@ -180,42 +174,6 @@ export default function CourseGradesWindow({ studentId, courseId, onClose }: Cou
                   )}
                 </CardContent>
               </Card>
-
-              {/* Grade Distribution */}
-              {courseGrades.grades.length > 0 && (
-                <Card className="mt-6">
-                  <CardHeader>
-                    <CardTitle>Distribución de Notas</CardTitle>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="space-y-4">
-                      {courseGrades.grades.map((grade) => {
-                        const percentage = (grade.score / grade.maxScore) * 100
-                        return (
-                          <div key={grade.id} className="flex items-center gap-4">
-                            <div className="w-32 text-sm font-medium">{grade.type}</div>
-                            <div className="flex-1 bg-gray-200 rounded-full h-3">
-                              <div
-                                className={`h-3 rounded-full ${
-                                  percentage >= 90
-                                    ? "bg-green-500"
-                                    : percentage >= 75
-                                      ? "bg-blue-500"
-                                      : percentage >= 60
-                                        ? "bg-yellow-500"
-                                        : "bg-red-500"
-                                }`}
-                                style={{ width: `${percentage}%` }}
-                              ></div>
-                            </div>
-                            <div className="w-16 text-sm font-bold text-right">{percentage.toFixed(0)}%</div>
-                          </div>
-                        )
-                      })}
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
             </>
           )}
         </div>
@@ -225,11 +183,6 @@ export default function CourseGradesWindow({ studentId, courseId, onClose }: Cou
           <Button onClick={onClose} variant="outline">
             Cerrar
           </Button>
-          {courseGrades && (
-            <Button onClick={() => window.print()} className="bg-amber-500 hover:bg-amber-600">
-              Imprimir
-            </Button>
-          )}
         </div>
       </div>
     </div>

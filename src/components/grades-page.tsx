@@ -313,7 +313,7 @@ export default function GradesPage() {
                         style={{ width: `${percentage}%` }}
                       ></div>
                     </div>
-                    <p className="text-xs text-gray-500 mt-2">{percentage.toFixed(0)}% del máximo</p>
+                    
                   </div>
                 )
               })}

@@ -11,13 +11,11 @@ export default function DashboardPage() {
   const router = useRouter()
 
   useEffect(() => {
-    // Redirect to login if no student is logged in
     if (!currentStudent) {
       router.push("/")
     }
   }, [currentStudent, router])
 
-  // Show loading while checking authentication
   if (!currentStudent) {
     return <LoadingScreen />
   }
