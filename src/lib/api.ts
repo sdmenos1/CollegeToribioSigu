@@ -1,4 +1,4 @@
-// API functions to fetch real data from your backend
+
 export interface StudentGrade {
   id: string
   type: string
