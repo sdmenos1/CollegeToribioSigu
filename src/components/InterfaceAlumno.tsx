@@ -32,12 +32,6 @@ const navigationItems = [
     id: "attendance",
   },
   {
-    icon: BookOpen,
-    label: "Mis Cursos",
-    href: "#cursos",
-    id: "courses",
-  },
-  {
     icon: GraduationCap,
     label: "Mis Calificaciones",
     href: "#calificaciones",
